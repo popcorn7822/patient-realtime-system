@@ -2,8 +2,26 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 const socket = io();
 
+// ✅ สร้าง interface สำหรับข้อมูลผู้ป่วย
+interface PatientData {
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
+  Birthday?: string;
+  gender?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  preferredLanguage?: string;
+  otherLanguage?: string;
+  nationality?: string;
+  emergencyContactName?: string;
+  emergencyContactRelation?: string;
+  religion?: string;
+}
+
 const StaffView = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<PatientData>({});
   const [status, setStatus] = useState("Inactive");
   const [typingDots, setTypingDots] = useState("");
 
@@ -11,7 +29,7 @@ const StaffView = () => {
     let typingInterval: NodeJS.Timeout;
     let resetStatusTimeout: NodeJS.Timeout;
 
-    socket.on("typing", (incoming) => {
+    socket.on("typing", (incoming: PatientData) => {
       setData(incoming);
       setStatus("Typing");
       clearTimeout(resetStatusTimeout);
@@ -30,7 +48,7 @@ const StaffView = () => {
       }
     });
 
-    socket.on("submitForm", (incoming) => {
+    socket.on("submitForm", (incoming: PatientData) => {
       setData(incoming);
       setStatus("Submitted");
       setTypingDots("");
