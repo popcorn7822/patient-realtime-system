@@ -12,6 +12,36 @@ Designed to work across devices with real-time updates reflected instantly on th
 - Clear dashboard preview for staff with structured view
 
 ---
+## 🔧 Technologies
+
+- **Frontend Framework:** Next.js (TypeScript)
+- **Realtime Communication:** Socket.IO
+- **Styling:** Tailwind CSS
+- **Server:** Express.js (custom server for Socket.IO integration)
+
+---
+
+## 📁 Folder Structure
+
+```
+patient-realtime-system/
+├── src/
+│   ├── pages/
+│   │   ├── _app.tsx              # ห่อทุกหน้าด้วย global provider และ CSS
+│   │   ├── index.tsx             # หน้าเริ่มต้น (redirect ไป /patient)
+│   │   ├── patient.tsx           # แบบฟอร์มกรอกข้อมูลผู้ป่วย
+│   │   └── staff.tsx             # หน้าแสดงข้อมูลเรียลไทม์สำหรับเจ้าหน้าที่
+│   ├── components/
+│   │   ├── PatientForm.tsx       # คอมโพเนนต์ฟอร์มผู้ป่วย
+│   │   └── StaffView.tsx         # คอมโพเนนต์หน้าจอเจ้าหน้าที่
+│   └── styles/
+│       └── globals.css           # Global Tailwind CSS style
+├── server.js                    # Express + WebSocket + Next.js integration
+├── package.json                 # Dependency และ script ต่าง ๆ
+└── README.md                    # เอกสารฉบับนี้
+```
+
+---
 
 ## 📦 Project Setup
 
